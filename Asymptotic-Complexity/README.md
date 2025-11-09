@@ -353,6 +353,12 @@ Design tips
 - For Dijkstra on dense graphs, consider using a Fibonacci heap variant theoretically; in practice binary heap (priority_queue) is fast and simple.
 
 ---
+## Appendix — Notation checklist for reviewers
+
+- O(...) — upper bound (commonly worst-case)
+- Ω(...) — lower bound
+- Θ(...) — tight bound (both O and Ω)
+- When you claim Θ, supply both upper and lower bound reasoning.
 
 ## How to integrate into your repo
 
@@ -367,16 +373,6 @@ Contribution & style guidelines
 - Keep code snippets short (< 40 lines).
 - Add Best/Avg/Worst only when they differ — otherwise state a single complexity.
 - Mark any assumptions (e.g., "array is sorted", "hash has good distribution").
-
----
-
-## Changelog
-- v1.0 — Initial professional layout, C++ snippets include `using namespace std;`, summary tables, design tips.
-
----
-
-## License
-This document is provided under the MIT license. Replace or extend with your preferred license in the repo.
 
 ---
 ## Design tips & best practices
@@ -397,12 +393,6 @@ This document is provided under the MIT license. Replace or extend with your pre
 
 ---
 
-## Appendix — Notation checklist for reviewers
-
-- O(...) — upper bound (commonly worst-case)
-- Ω(...) — lower bound
-- Θ(...) — tight bound (both O and Ω)
-- When you claim Θ, supply both upper and lower bound reasoning.
 
 ---
 
