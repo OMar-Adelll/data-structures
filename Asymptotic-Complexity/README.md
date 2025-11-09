@@ -1,4 +1,4 @@
-# Algorithmic Complexity Reference — C++ Examples (using namespace std)
+# Algorithmic Complexity Reference
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Language: C++](https://img.shields.io/badge/language-C%2B%2B-lightgrey.svg)]()
