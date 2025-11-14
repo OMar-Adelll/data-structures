@@ -19,7 +19,7 @@ struct Node
     T val;
     Node<T> *next;
 
-    Node(T item) : val(item) {};
+    Node(T item) : val(item), next(nullptr) {};
 };
 
 template <typename T>
@@ -44,7 +44,7 @@ public:
 
     void insertFront(T item)
     {
-        Node<T> *node = new Node(item);
+        Node<T> *node = new Node<T>(item);
         node->next = head;
         head = node;
         length++;
@@ -57,20 +57,118 @@ public:
         if (isempty())
         {
             head = node;
-            length++;
+        }
+        else
+        {
+            Node<T> *trav = head;
+            while (trav->next != nullptr)
+                trav = trav->next;
+
+            trav->next = node;
+        }
+        length++;
+    }
+
+    void insertAt(T item, int idx)
+    {
+        if (idx < 0 || idx > length) // ( > length ) because you might insert at last position
+        {
+            cout << "Invalid Index !" << nl;
             return;
         }
 
-        Node<T> *trav = head;
-        while (trav->next != nullptr)
-            trav = trav->next;
+        Node<T> *node = new Node<T>(item);
+        if (idx == 0)
+        {
+            node->next = head;
+            head = node;
+        }
+        else
+        {
+            Node<T> *trav = head;
+            for (int i = 0; i < idx - 1; i++)
+                trav = trav->next;
 
-        trav->next = node;
+            node->next = trav->next;
+            trav->next = node;
+        }
         length++;
+    }
+
+    void updateAt(T item, int idx)
+    {
+
+        if (idx < 0 || idx >= length)
+        {
+            if (isempty())
+                cout << "Your list is empty !" << nl;
+            else
+                cout << "Invalid Index !" << nl;
+
+            return;
+        }
+
+        if (idx == 0)
+        {
+            head->val = item;
+        }
+        else
+        {
+            Node<T> *trav = head;
+            for (int i = 0; i < idx; i++)
+                trav = trav->next;
+
+            trav->val = item;
+        }
+    }
+
+    void deleteFront()
+    {
+        if (isempty())
+            return void(cout << "Your list is empty !" << nl);
+
+        Node<T> *temp = head;
+        head = head->next;
+        delete temp;
+        length--;
+    }
+
+    void deleteBack()
+    {
+        if (isempty())
+            return void(cout << "Your list is empty !" << nl);
+
+        if (length == 1)
+        {
+            delete head;
+            head = nullptr;
+        }
+        else
+        {
+            Node<T> *trav = head;
+            while (trav->next->next != nullptr)
+                trav = trav->next;
+
+            delete trav->next;
+            trav->next = nullptr;
+        }
+
+        length--;
+    }
+
+    void deleteAt(int idx)
+    {
+        // TODO ...
     }
 
     void display()
     {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            return;
+        }
+
         Node<T> *trav = head;
         while (trav != nullptr)
         {
@@ -80,28 +178,22 @@ public:
         cout << nl;
     }
 
-    // -- Additional funcitons -- //
+    // -- Additional functions -- //
 
-    Node<T> *get_nth(int num) // nodes is starting from 0....n - 1
+    Node<T> *get_nth(int idx) // nodes is starting from 0....n - 1
     {
-        if (isempty() || num < 0 || num >= length)
+        if (isempty() || idx < 0 || idx >= length)
         {
             cout << (isempty() ? "Your list is empty !" : "Invalid Index !") << nl;
-            ;
+
             exit(1);
         }
 
-        int cur = 0;
         Node<T> *trav = head;
-        while (trav != nullptr)
-        {
-            if (cur++ == num)
-                return trav;
-
+        for (int i = 0; i < idx; i++)
             trav = trav->next;
-        }
 
-        return nullptr;
+        return trav;
     }
 
     int searchItem(T item)
@@ -124,14 +216,75 @@ public:
 
         return -1;
     }
+
+    Node<T> *getMax()
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            exit(1);
+        }
+
+        Node<T> *maxi = head, *trav = head->next;
+        while (trav != nullptr)
+        {
+            if (trav->val > maxi->val)
+                maxi = trav;
+            trav = trav->next;
+        }
+
+        return maxi;
+    }
+
+    Node<T> *getMin()
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            exit(1);
+        }
+
+        Node<T> *mini = head, *trav = head->next;
+        while (trav != nullptr)
+        {
+            if (trav->val < mini->val)
+                mini = trav;
+
+            trav = trav->next;
+        }
+
+        return mini;
+    }
+
+    // -- save memory leak -- //
+    LinkedList(const LinkedList &) = delete;
+    LinkedList &operator=(const LinkedList &another) = delete;
+    ~LinkedList()
+    {
+        Node<T> *trav = head;
+        while (trav != nullptr)
+        {
+            Node<T> *temp = trav;
+            trav = trav->next;
+            delete temp;
+        }
+
+        head = nullptr;
+        length = 0;
+    }
 };
 
 int main()
 {
-    LinkedList<int> list(8);
+    LinkedList<int> list;
+    list.insertBack(10);
+    list.insertBack(7);
+    list.insertBack(4);
+    list.insertBack(8);
 
-    int idx = list.searchItem(7);
+    list.display();
 
-    cout << idx << nl;
+    list.deleteFront();
+    list.display();
     return 0;
 }
