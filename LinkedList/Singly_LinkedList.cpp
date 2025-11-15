@@ -37,10 +37,19 @@ public:
         node->next = nullptr;
         head = node;
         length = 1;
+
+        // Time Complexity : O(1)
+        // Memory Complexity : O(1)
     }
 
     // -- Main functions -- //
-    bool isempty() { return head == nullptr; }
+    bool isempty()
+    {
+        return head == nullptr;
+
+        // Time Complexity : O(1)
+        // Memory Complexity : O(1)
+    }
 
     void insertFront(T item)
     {
@@ -48,6 +57,9 @@ public:
         node->next = head;
         head = node;
         length++;
+
+        // Time Complexity : O(1)
+        // Memory Complexity : O(1)
     }
 
     void insertBack(T item)
@@ -67,6 +79,9 @@ public:
             trav->next = node;
         }
         length++;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     void insertAt(T item, int idx)
@@ -93,6 +108,9 @@ public:
             trav->next = node;
         }
         length++;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     void updateAt(T item, int idx)
@@ -120,6 +138,9 @@ public:
 
             trav->val = item;
         }
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     void deleteFront()
@@ -131,6 +152,9 @@ public:
         head = head->next;
         delete temp;
         length--;
+
+        // Time Complexity : O(1)
+        // Memory Complexity : O(1)
     }
 
     void deleteBack()
@@ -154,11 +178,45 @@ public:
         }
 
         length--;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     void deleteAt(int idx)
     {
-        // TODO ...
+        if (idx < 0 || idx >= length)
+        {
+            if (isempty())
+                cout << "Your list is empty !" << nl;
+            else
+                cout << "Invalid Index !" << nl;
+
+            return;
+        }
+
+        if (idx == 0) // delete the first node
+        {
+            deleteFront();
+        }
+        else if (idx == length - 1) // delete the last node
+        {
+            deleteBack();
+        }
+        else
+        {
+            Node<T> *trav = head;
+            for (int i = 0; i < idx - 1; i++)
+                trav = trav->next;
+
+            Node<T> *temp = trav->next;
+            trav->next = trav->next->next;
+            delete temp;
+            length--;
+        }
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     void display()
@@ -176,6 +234,9 @@ public:
             trav = trav->next;
         }
         cout << nl;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 
     // -- Additional functions -- //
@@ -193,6 +254,8 @@ public:
         for (int i = 0; i < idx; i++)
             trav = trav->next;
 
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
         return trav;
     }
 
@@ -211,9 +274,12 @@ public:
                 return Index;
 
             Index++;
+            cout << x.getMidd()->val << nl;
             trav = trav->next;
         }
 
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
         return -1;
     }
 
@@ -233,6 +299,8 @@ public:
             trav = trav->next;
         }
 
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
         return maxi;
     }
 
@@ -253,7 +321,29 @@ public:
             trav = trav->next;
         }
 
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
         return mini;
+    }
+
+    Node<T> *getMid()
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            exit(1);
+        }
+
+        Node<T> *Mid = head, *fast = head;
+        while (fast->next && fast->next->next)
+            Mid = Mid->next, fast = fast->next->next;
+
+        if (fast->next == nullptr)
+            return Mid;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
+        return Mid->next;
     }
 
     // -- save memory leak -- //
@@ -271,20 +361,13 @@ public:
 
         head = nullptr;
         length = 0;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
     }
 };
 
 int main()
 {
-    LinkedList<int> list;
-    list.insertBack(10);
-    list.insertBack(7);
-    list.insertBack(4);
-    list.insertBack(8);
-
-    list.display();
-
-    list.deleteFront();
-    list.display();
     return 0;
 }
