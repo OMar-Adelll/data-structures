@@ -274,7 +274,6 @@ public:
                 return Index;
 
             Index++;
-            cout << x.getMidd()->val << nl;
             trav = trav->next;
         }
 
@@ -346,6 +345,136 @@ public:
         return Mid->next;
     }
 
+    void deleteVal(T item)
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            return;
+        }
+
+        if (head->val == item)
+        {
+            Node<T> *temp = head;
+            head = head->next;
+            delete temp;
+            length--;
+            return;
+        }
+
+        Node<T> *trav = head;
+        while (trav->next != nullptr)
+        {
+            if (trav->next->val == item)
+            {
+                Node<T> *temp = trav->next;
+                trav->next = trav->next->next;
+                delete temp;
+
+                length--;
+                return;
+            }
+
+            trav = trav->next;
+        }
+
+        cout << "The value isn't found !" << nl;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
+    }
+
+    void reverseList()
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            return;
+        }
+
+        Node<T> *prv = nullptr, *nxt = nullptr, *cur = head;
+        while (cur)
+        {
+            nxt = cur->next;
+            cur->next = prv;
+            prv = cur;
+            cur = nxt;
+        }
+
+        head = prv;
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
+    }
+
+    void sortList()
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            return;
+        }
+        vector<int> nums(length);
+        Node<T> *trav = head;
+        int idx = 0;
+        while (trav)
+        {
+            nums[idx++] = trav->val;
+            trav = trav->next;
+        }
+
+        sort(all(nums));
+
+        trav = head;
+        idx = 0;
+        while (trav)
+        {
+            trav->val = nums[idx++];
+            trav = trav->next;
+        }
+        // Time Complexity : O(n log n )
+        // Memory Complexity : O(1)
+    }
+
+    void insertCorrect(T item) // the list should be sorted
+    {
+        if (isempty() || head->val >= item)
+        {
+            insertFront(item);
+            return;
+        }
+
+        Node<T> *node = new Node<T>(item);
+        Node<T> *trav = head;
+        while (trav->next && trav->next->val < item)
+            trav = trav->next;
+
+        node->next = trav->next;
+        trav->next = node;
+        length++;
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
+    }
+    int countOccurance(T item)
+    {
+        if (isempty())
+        {
+            cout << "Your list is empty !" << nl;
+            return 0;
+        }
+        int freq = 0;
+        Node<T> *trav = head;
+        while (trav)
+        {
+            freq += (trav->val == item);
+            trav = trav->next;
+        }
+
+        // Time Complexity : O(n)
+        // Memory Complexity : O(1)
+        return freq;
+    }
+
     // -- save memory leak -- //
     LinkedList(const LinkedList &) = delete;
     LinkedList &operator=(const LinkedList &another) = delete;
@@ -369,5 +498,22 @@ public:
 
 int main()
 {
+    LinkedList<int> list;
+    list.insertFront(5);
+    list.insertFront(4);
+    list.insertFront(3);
+    list.insertFront(2);
+    list.insertFront(1);
+
+    list.display();
+    list.reverseList();
+    list.display();
+    list.sortList();
+    list.display();
+    list.insertCorrect(7);
+    list.insertCorrect(2);
+    list.display();
+
+    cout << list.countOccurance(2) << nl;
     return 0;
 }
