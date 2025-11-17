@@ -498,22 +498,5 @@ public:
 
 int main()
 {
-    LinkedList<int> list;
-    list.insertFront(5);
-    list.insertFront(4);
-    list.insertFront(3);
-    list.insertFront(2);
-    list.insertFront(1);
-
-    list.display();
-    list.reverseList();
-    list.display();
-    list.sortList();
-    list.display();
-    list.insertCorrect(7);
-    list.insertCorrect(2);
-    list.display();
-
-    cout << list.countOccurance(2) << nl;
     return 0;
 }
