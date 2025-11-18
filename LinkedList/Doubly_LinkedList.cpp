@@ -293,16 +293,5 @@ public:
 
 int main()
 {
-    LinkedList<int> list;
-    list.insertFront(10);
-    list.insertFront(2);
-    list.insertFront(10);
-    list.insertFront(2);
-    list.insertFront(2);
-
-    list.display();
-    list.delete_all_nodes_with_key(2);
-    list.display();
-
     return 0;
 }
