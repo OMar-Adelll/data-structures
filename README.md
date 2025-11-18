@@ -26,8 +26,8 @@ Every structure will include:
 
 | Category                  | Data Structure     | Link                                     |
 | ------------------------- | ------------------ | ---------------------------------------- |
-| **Linear Structures**     | Vector             | [🔗 View Implementation](./arrays/)      |
-|                           | Linked List        | [🔗 View Implementation](./linked-list/) |
+| **Linear Structures**     | Vector             | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Vector/Vector.cpp)      |
+|                           | Linked List        | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/LinkedList) |
 |                           | Stack              | [🔗 View Implementation](./stack/)       |
 |                           | Queue              | [🔗 View Implementation](./queue/)       |
 | **Non-Linear Structures** | Tree               | [🔗 View Implementation](./trees/)       |
