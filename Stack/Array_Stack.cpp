@@ -26,6 +26,20 @@ private:
     int top;
     T *arr;
 
+    // reverse function with recursive calls
+    void rev()
+    {
+        if (top <= 0)
+            return;
+
+        T last = arr[top];
+        top--;
+
+        rev();
+
+        push_bottom(last);
+    }
+
 public:
     MyStack(int size)
     {
@@ -102,6 +116,31 @@ public:
         return arr[top--];
     }
 
+    void push_bottom(T item)
+    {
+        if (isfull())
+        {
+            cout << "Your stack is full";
+            return;
+        }
+
+        top++;
+        for (int i = top; i > 0; i--)
+        {
+            arr[i] = arr[i - 1];
+        }
+
+        arr[0] = item;
+    }
+
+    void reverse()
+    {
+        if (isempty())
+            return void(cout << "Your stack is empty !" << nl);
+
+        rev();
+    }
+
     void pop_and_push(T item)
     {
         arr[top] = item;
@@ -110,6 +149,5 @@ public:
 
 signed main()
 {
-
     return 0;
 }
