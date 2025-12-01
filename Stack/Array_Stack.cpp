@@ -141,7 +141,22 @@ public:
         rev();
     }
 
-    void pop_and_push(T item)
+    int searchItem(T item)
+    {
+        if (isempty())
+        {
+            cout << "Your Stack is empty ! " << nl;
+            exit(1);
+        }
+
+        for (int index = top; index >= 0; index--) // from top to zero because do you want to know its position in relation with the top
+            if (arr[index] == item)
+                return (top - index);
+
+        return -1;
+    }
+
+    void pop_and_push(T item) // this function if you want to pop the peek and push item in the same time
     {
         arr[top] = item;
     }
@@ -149,5 +164,6 @@ public:
 
 signed main()
 {
+
     return 0;
 }

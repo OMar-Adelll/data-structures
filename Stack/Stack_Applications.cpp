@@ -116,6 +116,32 @@ public:
         return cnt;
     }
 
+    int searchItem(T item)
+    {
+        if (isempty())
+        {
+            cout << "Your Stack is empty !" << nl;
+            exit(1);
+        }
+
+        if (head->val)
+        {
+            return 0;
+        }
+
+        int index = 0;
+        Node<T> *cur = head;
+        while (cur)
+        {
+            if (cur->val == item)
+                return index;
+            index++;
+            cur = cur->next;
+        }
+
+        return -1; // not found
+    }
+
     ~Mystack()
     {
         while (!isempty())
