@@ -21,6 +21,7 @@ void debug() { cout << "[DEBUG]" << nl; }
 template <typename T>
 class Node
 {
+public:
     T val;
     Node *next;
     Node(T val) : val(val), next(nullptr) {};
@@ -71,12 +72,45 @@ public:
 
         return head->val;
     }
+
+    void display()
+    {
+        if (isempty())
+            return;
+
+        Node<T> *trav = head;
+        while (trav != nullptr)
+        {
+            cout << trav->val << " ";
+            trav = trav->next;
+        }
+        cout << nl;
+    }
+
+    int getSize()
+    {
+        if (isempty())
+        {
+            cout << "Your Stack is empty " << nl;
+            exit(1);
+        }
+
+        int cnt = 0;
+        Node<T> *trav = head;
+        while (trav)
+            cnt++, trav = trav->next;
+
+        return cnt;
+    }
+
+    ~Mystack()
+    {
+        while (!isempty())
+            pop();
+    }
 };
 
 signed main()
 {
     return 0;
 }
-
-
-
