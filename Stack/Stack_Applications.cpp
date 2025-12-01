@@ -192,7 +192,7 @@ public:
         return postfix;
     }
 
-    int postfixEvaluation(string &postfix)
+    int postfixEvaluation(string &postfix) // to evaluate the postfix
     {
         Mystack<int> res;
 
@@ -245,7 +245,7 @@ public:
         return res.top();
     }
 
-    int InfixEvaluation(string &infix)
+    int InfixEvaluation(string &infix) // to evaluate the infix equation->  ( 1 + 2 ) * ( 6 - 4 )  -> 6
     {
         Mystack<int> vals;
         Mystack<char> op;
@@ -325,42 +325,112 @@ public:
         return vals.top();
     }
 
-    string Infix_to_Prefix(string &infix)
+    string Infix_to_Prefix(string &infix) // to convert the Infix to prefix
     {
         // TODO
         return "";
     }
 
-    int prefixEvaluation(string &prefix)
+    int prefixEvaluation(string &prefix) // to evaluate the prefix equation
     {
         // TODO
         return 0;
     }
 
-    string reverseWord(string &word)
+    string reverseEachWord(string &word) // reverse each word : Omar Adel -> ledA ramO
     {
-        // TODO
-        return "";
+        Mystack<char> st;
+        string res = "";
+
+        for (int i = 0; i < sz(word); i++)
+        {
+            if (isspace(word[i]))
+                st.push('#');
+            else
+                st.push(word[i]);
+        }
+
+        while (!st.isempty())
+        {
+            if (st.top() == '#')
+                res += " ";
+            else
+                res += st.top();
+
+            st.pop();
+        }
+
+        return res;
+    }
+
+    string reverseWord(string &word) // reverse sentence : OmarAdel -> ledAramO
+    {
+        Mystack<char> st;
+        string res = "";
+
+        for (int i = 0; i < sz(word); i++)
+            st.push(word[i]);
+
+        while (!st.isempty())
+        {
+            res += st.top();
+            st.pop();
+        }
+
+        return res;
     }
 
     bool checkBalance(string &s)
     {
-        // TODO
-        return false;
+        Mystack<char> st;
+        for (auto &c : s)
+        {
+            if (st.isempty() || c == '(' || c == '[' || c == '{')
+                st.push(c);
+            else if ((st.top() == '(' && c == ')') or (st.top() == '[' && c == ']') or (st.top() == '{' && c == '}'))
+                st.pop();
+        }
+        return st.isempty();
+    }
+
+    bool isPalindrome(string &s) // chach if the word is palindrome or not
+    {
+        Mystack<char> st;
+        for (auto &c : s)
+            st.push(c);
+
+        if (st.isempty())
+            return false;
+
+        for (int i = 0; i < sz(s); i++)
+        {
+            if (st.top() != s[i])
+                return false;
+            st.pop();
+        }
+
+        return true;
+    }
+
+    string decTobin(int x) // conver decimal to binary
+    {
+        Mystack<char> st;
+        string s = "";
+        while (x > 0)
+        {
+            st.push((x % 2) + '0');
+            x /= 2;
+        }
+
+        while (!st.isempty())
+            s += st.top(), st.pop();
+
+        return s;
     }
 };
 
 signed main()
 {
-    Mystack<int> st;
-    string infix = "( 1 + 2 ) * ( 6 - 4 )";
-    cout << infix << nl;
-    cout << st.InfixEvaluation(infix) << nl;
-    string post = st.Infix_to_Postfix(infix);
-    cout << "-----" << nl;
-
-    cout << post << nl;
-    cout << st.postfixEvaluation(post) << nl;
 
     return 0;
 }
