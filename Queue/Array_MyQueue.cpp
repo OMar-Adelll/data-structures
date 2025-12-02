@@ -197,11 +197,5 @@ public:
 
 signed main()
 {
-    MyQueue<int> q(10);
-    for (int i = 1; i <= 10; i++)
-        q.enQueue(i);
-
-    cout << q.searchItem(10) << nl;
-
     return 0;
 }
