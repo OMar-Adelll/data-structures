@@ -105,12 +105,10 @@ Below are links to your queue implementations:
 
 ### 🔗 Circular Array Queue
 [View Circular Array Queue Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Queue/Circular_Array_Queue.cpp)
-
-### 🔗 Linked List Based Queue
-[View Linked List Queue Implementation](./LinkedListQueue.cpp)
-
-## 🔗 Priority Queue Implementation
-[View Priority Queue Implementation](./PriorityQueue.cpp)
+### 🔗 Linked List Queue 
+[View Linked List Queue Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Queue/Queue.cpp)
+### 🔗 Linked List Priority Queue 
+[View Linked List Priority Queue Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Queue/PriorityQueue.cpp)
 
 
 ---
