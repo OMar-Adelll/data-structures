@@ -78,6 +78,28 @@ Now `rear` moved back to index `0` because of modulo operation.
 
 ---
 
+# ⭐ Priority Queue
+
+## 📌 What Is a Priority Queue?
+A **Priority Queue** is a special type of queue where **elements are not served in FIFO order**, but instead based on their **priority**.
+
+- Higher priority elements are removed first (Max-Heap)
+- Or lower priority elements are removed first (Min-Heap)
+
+## ✔ Characteristics
+- Implemented using **Heap** (binary heap is most common)
+- Insert → O(log n)
+- Remove highest priority → O(log n)
+- Access top priority → O(1)
+
+## 📘 Example Use Cases
+- Task scheduling
+- Dijkstra’s shortest path algorithm
+- CPU job scheduling
+- Event simulation systems
+
+----
+
 ## 📂 Code Implementations
 Below are links to your queue implementations:
 
@@ -87,7 +109,9 @@ Below are links to your queue implementations:
 ### 🔗 Linked List Based Queue
 [View Linked List Queue Implementation](./LinkedListQueue.cpp)
 
-> Replace `./filename` with the actual paths in your repo.
+## 🔗 Priority Queue Implementation
+[View Priority Queue Implementation](./PriorityQueue.cpp)
+
 
 ---
 
