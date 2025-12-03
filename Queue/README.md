@@ -82,7 +82,7 @@ Now `rear` moved back to index `0` because of modulo operation.
 Below are links to your queue implementations:
 
 ### 🔗 Circular Array Queue
-[View Circular Array Queue Implementation](./CircularArrayQueue.cpp)
+[View Circular Array Queue Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Queue/Circular_Array_Queue.cpp)
 
 ### 🔗 Linked List Based Queue
 [View Linked List Queue Implementation](./LinkedListQueue.cpp)
