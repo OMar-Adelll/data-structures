@@ -231,21 +231,5 @@ public:
 
 signed main()
 {
-    MyQueue<int> q(10);
-    q.enQueue(10);
-    q.enQueue(7);
-    q.enQueue(11);
-    q.enQueue(5);
-
-    vector<int> el = q.dequeueN_elements(100);
-    for (auto &c : el)
-        cout << c << " ";
-
-    cout << q.Front() << nl;
-    q.deQueue();
-    cout << q.Front() << nl;
-
-    vector<int> el2 = q.dequeueN_elements(4);
-
     return 0;
 }
