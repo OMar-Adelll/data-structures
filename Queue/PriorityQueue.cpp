@@ -65,8 +65,5 @@ public:
 
 signed main()
 {
-    priority_Queue<int> pq;
-
-
     return 0;
 }

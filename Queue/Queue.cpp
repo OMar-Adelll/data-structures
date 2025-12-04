@@ -57,6 +57,5 @@ public:
 
 signed main()
 {
-
     return 0;
 }
