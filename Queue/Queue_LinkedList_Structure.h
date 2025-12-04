@@ -84,7 +84,7 @@ public:
     void deleteFront()
     {
         if (isempty())
-            return void(cout << "Your list is empty !" << nl);
+            return void(cout << "Your Queue is empty !" << nl);
 
         Node<T> *temp = head;
         head = head->next;
@@ -99,7 +99,7 @@ public:
     {
         if (isempty())
         {
-            cout << "Your list is empty !" << nl;
+            cout << "Your Queue is empty !" << nl;
             return;
         }
 
@@ -121,7 +121,7 @@ public:
     {
         if (isempty())
         {
-            cout << "Your list is empty !" << nl;
+            cout << "Your Queue is empty !" << nl;
             exit(1);
         }
         int Index = 0;

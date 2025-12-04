@@ -33,6 +33,14 @@ private:
     Node<T> *head;
     int length;
 
+    void insertFront(T item)
+    {
+        Node<T> *node = new Node<T>(item);
+        node->next = head;
+        head = node;
+        length++;
+    }
+
 public:
     LinkedList() : head(nullptr), length(0) {}
     LinkedList(T item)

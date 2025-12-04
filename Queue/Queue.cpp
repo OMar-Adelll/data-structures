@@ -26,12 +26,12 @@ private:
     LinkedList<T> list;
 
 public:
-    Queue() : LinkedList() {}
+    Queue() {}
 
     // -- Main functions -- //
     void enQueue(T item)
     {
-        list.insertBack();
+        list.insertBack(item);
     }
 
     void deQueue()

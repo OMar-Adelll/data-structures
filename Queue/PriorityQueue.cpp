@@ -26,7 +26,7 @@ private:
     LinkedList<T> list;
 
 public:
-    priority_Queue() : LinkedList() {};
+    priority_Queue() {}
 
     void insert(T item)
     {
@@ -52,6 +52,11 @@ public:
         return list.searchItem(item);
     }
 
+    bool isempty()
+    {
+        return list.isempty();
+    }
+
     void greater()
     {
         list.GreaterToSmaller();
@@ -60,6 +65,8 @@ public:
 
 signed main()
 {
+    priority_Queue<int> pq;
+
 
     return 0;
 }
