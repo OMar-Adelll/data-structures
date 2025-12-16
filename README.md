@@ -28,9 +28,9 @@ Every structure will include:
 | ------------------------- | ------------------ | ---------------------------------------- |
 | **Linear Structures**     | Vector             | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Vector/Vector.cpp)      |
 |                           | Linked List        | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/LinkedList) |
-|                           | Stack              | [🔗 View Implementation](./stack/)       |
-|                           | Queue              | [🔗 View Implementation](./queue/)       |
-| **Non-Linear Structures** | Tree               | [🔗 View Implementation](./trees/)       |
+|                           | Stack              | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Stack)       |
+|                           | Queue              | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Queue)       |
+| **Non-Linear Structures** | Tree               | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Trees)       |
 |                           | Binary Search Tree | [🔗 View Implementation](./bst/)         |
 |                           | Heap               | [🔗 View Implementation](./heap/)        |
 |                           | Graph              | [🔗 View Implementation](./graph/)       |
