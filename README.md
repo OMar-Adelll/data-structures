@@ -72,8 +72,8 @@ If you’d like to add your own implementation or fix something:
 
 ## 🧭 Author
 
-**Mora**
+**Omar Adel Youssef**
 
-> “The Sky is the Limit 🌌”
+> "وَأَنْ لَيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ"
 
 ---
