@@ -22,20 +22,22 @@ Every structure will include:
 
 ---
 
-## 📂 Repository Structure
 
-| Category                  | Data Structure     | Link                                     |
-| ------------------------- | ------------------ | ---------------------------------------- |
-| **Linear Structures**     | Vector             | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/blob/main/Vector/Vector.cpp)      |
-|                           | Linked List        | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/LinkedList) |
-|                           | Stack              | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Stack)       |
-|                           | Queue              | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Queue)       |
-| **Non-Linear Structures** | Tree               | [🔗 View Implementation](https://github.com/OMar-Adelll/data-structures/tree/main/Trees)       |
-|                           | Binary Search Tree | [🔗 View Implementation](./bst/)         |
-|                           | Heap               | [🔗 View Implementation](./heap/)        |
-|                           | Graph              | [🔗 View Implementation](./graph/)       |
-| **Hashing & Others**      | Hash Table         | [🔗 View Implementation](./hash-table/)  |
-|                           | Trie               | [🔗 View Implementation](./trie/)        |
+## 🗂 Repository Structure
+
+| 🗂️ Category | 🧱 Data Structure | 🔗 Implementation |
+|------------|------------------|------------------|
+| **🔹 Linear Structures** | Vector | [View Code →](https://github.com/OMar-Adelll/data-structures/blob/main/Vector/Vector.cpp) |
+| | Linked List | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/LinkedList) |
+| | Stack | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Stack) |
+| | Queue | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Queue) |
+| **🌳 Non-Linear Structures** | Tree | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Trees) |
+| | Binary Search Tree | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/BST) |
+| | Heap | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Heap) |
+| | Graph | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Graph) |
+| **🔐 Hashing & Others** | Hash Table | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/HashTable) |
+| | Trie | [View Code →](https://github.com/OMar-Adelll/data-structures/tree/main/Trie) |
+
 
 _(More structures coming soon...)_
 
