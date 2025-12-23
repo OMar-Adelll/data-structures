@@ -29,7 +29,7 @@ public:
 };
 
 template <typename T>
-class BT
+class MyBT
 {
 private:
     Node<T> *root;
@@ -143,9 +143,9 @@ private:
     }
 
 public:
-    BT() : root(nullptr) {}                        // default constructor
-    BT(T rootVal) { root = new Node<T>(rootVal); } // Parameterized constructor
-    ~BT() { clear(root); }                         // save memory leak
+    MyBT() : root(nullptr) {}                        // default constructor
+    MyBT(T rootVal) { root = new Node<T>(rootVal); } // Parameterized constructor
+    ~MyBT() { clear(root); }                         // save memory leak
 
     // -- Main Functions -- //
     void setRoot(T item) // this function to initialize root
