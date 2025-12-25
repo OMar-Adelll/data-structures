@@ -7,6 +7,7 @@ using namespace std;
 #define int long long
 #define ll long long
 #define sz(x) (int)(x).size()
+#define nl '\n'
 
 template <typename T>
 class Node
@@ -55,6 +56,13 @@ private:
         postOrder(root->right);
         cout << root->val << " ";
     }
+
+    // // this type is Breadth First Search -> BFS
+    // void display_LevelByLevel()
+    // {
+    //     if (!root)
+    //         return;
+    // }
 
     // -- Additional Private Helper Functions -- //
     void clear(Node<T> *node)
@@ -133,6 +141,39 @@ private:
         return isPerfect(root->left, h - 1) && isPerfect(root->right, h - 1);
     }
 
+    void LeftBoundary(Node<T> *root) // display left boundary nodes only
+    {
+        if (!root)
+            return;
+        cout << root->val << " ";
+        LeftBoundary(root->left);
+    }
+
+    void RightBoundary(Node<T> *root)
+    {
+        if (!root)
+            return;
+
+        cout << root->val << " ";
+        RightBoundary(root->right);
+    }
+
+    pair<int, int> diameterOfTree(Node<T> *root) // the longest len between two nodes
+    {
+        if (!root)
+            return {0, 0};
+
+        auto l = diameterOfTree(root->left);
+        auto r = diameterOfTree(root->right);
+
+        int h = 1 + max(l.second, r.second);
+
+        int diameterOfRoot = l.second + r.second;
+        int diameter = max({diameterOfRoot, l.second, r.second});
+
+        return {diameter, h};
+    }
+
 public:
     MyBT() : root(nullptr) {}                        // default constructor
     MyBT(T rootVal) { root = new Node<T>(rootVal); } // Parameterized constructor
@@ -200,6 +241,12 @@ public:
         cout << nl;
     }
 
+    void display_LevelByLevel()
+    {
+        display_LevelByLevel(root);
+        cout << nl;
+    }
+
     // -- Additional Functions -- //
     T TreeMax()
     {
@@ -250,10 +297,57 @@ public:
 
         return isPerfect(root);
     }
+
+    void LeftBoundary()
+    {
+        assert(root && "Your Tree is Empty !");
+
+        LeftBoundary(root);
+        cout << nl;
+    }
+
+    void RightBoundary()
+    {
+        assert(root && "Your Tree is Empty !");
+
+        RightBoundary(root);
+        cout << nl;
+    }
+
+    int diameterOfTree()
+    {
+        return diameterOfTree(root).first;
+    }
 };
 
 signed main()
 {
+    MyBT<int> tree(1); // root
+
+    tree.addByPath({'l'}, 2); // 1 -> left
+    tree.addByPath({'r'}, 3); // 1 -> right
+
+    tree.addByPath({'r', 'l'}, 4); // 3 -> left
+    tree.addByPath({'r', 'r'}, 5); // 3 -> right
+
+    cout << tree.diameterOfTree() << nl;
 
     return 0;
 }
+
+// Functions
+/*
+    1- set root
+    2- reset root
+    3- add by path
+    4- dfs display (inorder - preorder - postorder)
+    5- get Max node
+    6- nodes count
+    7- leaves count
+    8- tree height (levels of tree)
+    9- tree search
+    10- is perfect tree (left equals right)
+    11- boundaries (left - right)
+    12- bfs display level by level
+    13- get the diameter of the tree (the longest len between two nodes)
+*/
