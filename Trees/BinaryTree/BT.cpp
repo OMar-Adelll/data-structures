@@ -57,12 +57,27 @@ private:
         cout << root->val << " ";
     }
 
-    // // this type is Breadth First Search -> BFS
-    // void display_LevelByLevel()
-    // {
-    //     if (!root)
-    //         return;
-    // }
+    // this type is Breadth First Search -> BFS
+    void display_LevelByLevel(Node<T> *root)
+    {
+        if (!root)
+            return;
+        queue<Node<T> *> nodes;
+        nodes.push(root);
+        while (!nodes.empty())
+        {
+            Node<T> *fr = nodes.front();
+            nodes.pop();
+            cout << fr->val << " ";
+
+            if (fr->left)
+                nodes.push(fr->left);
+            if (fr->right)
+                nodes.push(fr->right);
+        }
+
+        cout << nl;
+    }
 
     // -- Additional Private Helper Functions -- //
     void clear(Node<T> *node)
@@ -241,7 +256,7 @@ public:
         cout << nl;
     }
 
-    void display_LevelByLevel()
+    void display_LevelByLevel() // bfs 
     {
         display_LevelByLevel(root);
         cout << nl;
@@ -330,7 +345,7 @@ signed main()
     tree.addByPath({'r', 'l'}, 4); // 3 -> left
     tree.addByPath({'r', 'r'}, 5); // 3 -> right
 
-    cout << tree.diameterOfTree() << nl;
+    tree.display_LevelByLevel();
 
     return 0;
 }
