@@ -184,7 +184,7 @@ private:
         int h = 1 + max(l.second, r.second);
 
         int diameterOfRoot = l.second + r.second;
-        int diameter = max({diameterOfRoot, l.second, r.second});
+        int diameter = max({diameterOfRoot, l.first, r.first});
 
         return {diameter, h};
     }
@@ -256,7 +256,7 @@ public:
         cout << nl;
     }
 
-    void display_LevelByLevel() // bfs 
+    void display_LevelByLevel() // bfs
     {
         display_LevelByLevel(root);
         cout << nl;
