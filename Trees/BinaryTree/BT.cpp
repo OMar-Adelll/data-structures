@@ -75,7 +75,7 @@ private:
             if (fr->right)
                 nodes.push(fr->right);
         }
-     }
+    }
 
     // -- Additional Private Helper Functions -- //
     void clear(Node<T> *node)
@@ -335,32 +335,5 @@ public:
 
 signed main()
 {
-    MyBT<int> tree(1); // root
-
-    tree.addByPath({'l'}, 2); // 1 -> left
-    tree.addByPath({'r'}, 3); // 1 -> right
-
-    tree.addByPath({'r', 'l'}, 4); // 3 -> left
-    tree.addByPath({'r', 'r'}, 5); // 3 -> right
-
-    tree.display_LevelByLevel();
-
     return 0;
 }
-
-// Functions
-/*
-    1- set root
-    2- reset root
-    3- add by path
-    4- dfs display (inorder - preorder - postorder)
-    5- get Max node
-    6- nodes count
-    7- leaves count
-    8- tree height (levels of tree)
-    9- tree search
-    10- is perfect tree (left equals right)
-    11- boundaries (left - right)
-    12- bfs display level by level
-    13- get the diameter of the tree (the longest len between two nodes)
-*/
