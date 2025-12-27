@@ -75,9 +75,7 @@ private:
             if (fr->right)
                 nodes.push(fr->right);
         }
-
-        cout << nl;
-    }
+     }
 
     // -- Additional Private Helper Functions -- //
     void clear(Node<T> *node)
