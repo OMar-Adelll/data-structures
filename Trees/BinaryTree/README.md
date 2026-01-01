@@ -1,4 +1,4 @@
-# 🌳 Binary Tree
+# 🌳 Binary Tree (BT)
 
 ## 📌 Overview
 
