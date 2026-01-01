@@ -84,6 +84,8 @@ private:
             return;
         clear(node->left);
         clear(node->right);
+
+        delete node;
     }
 
     T TreeMax(Node<T> *root)

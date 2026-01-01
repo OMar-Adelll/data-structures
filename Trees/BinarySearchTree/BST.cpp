@@ -24,7 +24,23 @@ class MyBST
 {
 private:
     Node<T> *root; // this is the root of the tree (the first pointer of the first node)
+
+    // -- clean the memory -- //
+    void clear(Node<T> *node)
+    {
+        if (!node)
+            return;
+
+        clear(node->left);
+        clear(node->right);
+
+        delete node;
+    }
+
 public:
+    MyBST() = default;
+    MyBST(T rootvale) { root = new Node<T>(rootvale); }
+    ~MyBST() { clear(root) };
 };
 
 signed main()
