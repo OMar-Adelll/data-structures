@@ -86,6 +86,13 @@ private:
         return node->val;
     }
 
+    T getMax(Node<T> *node)
+    {
+        if(node && node->right)
+            return getMax(node->right);
+        return node->val;  
+    }
+
     // -- clean the memory -- //
     void clear(Node<T> *node)
     {
@@ -143,6 +150,12 @@ public:
         if(!root) exit(1);
         return getMin(root);
     }
+
+    T getMax()
+    {
+        if(!root) exit(1);
+        return getMax(root);
+    }
 };
 
 signed main()
@@ -153,6 +166,6 @@ signed main()
     tree.insert(3);
     tree.insert(4);
     tree.insert(2);
-    cout << tree.getMin() << nl;
+    cout << tree.getMax() << nl;
     return 0;
 }
