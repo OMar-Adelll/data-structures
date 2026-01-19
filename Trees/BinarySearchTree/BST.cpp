@@ -55,7 +55,8 @@ private:
         if (!node)
             return;
         cout << node->val << " ";
-        PreOrder(node->left); PreOrder(node->right);
+        PreOrder(node->left);
+        PreOrder(node->right);
     }
 
     void InOrder(Node<T> *node)
@@ -71,11 +72,19 @@ private:
     {
         if (!node)
             return;
-        PostOrder(node->left); PostOrder(node->right);
+        PostOrder(node->left);
+        PostOrder(node->right);
         cout << node->val << " ";
     }
 
-    
+    // -- Additional Funcions -- //
+    T getMin(Node<T> *node)
+    {
+        if (node && node->left)
+           return getMin(node->left);
+
+        return node->val;
+    }
 
     // -- clean the memory -- //
     void clear(Node<T> *node)
@@ -97,22 +106,53 @@ public:
     // -- Main Functions -- //
 
     // [1] insertion
-    void insert(T item) { if (!root) return; insert(item, root); }
+    void insert(T item)
+    {
+        if (!root)
+            return;
+        insert(item, root);
+    }
 
     // [2] display BST
-    void PreOrder() {if(!root) return; PreOrder(root); cout << nl;}
-    void InOrder() {if(!root) return; InOrder(root); cout << nl;}
-    void PostOrder() {if(!root) return; PostOrder(root); cout << nl;}
+    void PreOrder()
+    {
+        if (!root)
+            return;
+        PreOrder(root);
+        cout << nl;
+    }
+    void InOrder()
+    {
+        if (!root)
+            return;
+        InOrder(root);
+        cout << nl;
+    }
+    void PostOrder()
+    {
+        if (!root)
+            return;
+        PostOrder(root);
+        cout << nl;
+    }
+
+
+    // -- Additional Functions --//
+    T getMin()
+    {
+        if(!root) exit(1);
+        return getMin(root);
+    }
 };
 
 signed main()
 {
-    // MyBST tree(10);
-    // tree.insert(20);
-    // tree.insert(5);
-    // tree.insert(3);
-    // tree.insert(4);
-    // tree.insert(2);
-    // tree.InOrder();
+    MyBST tree(10);
+    tree.insert(20);
+    tree.insert(5);
+    tree.insert(3);
+    tree.insert(4);
+    tree.insert(2);
+    cout << tree.getMin() << nl;
     return 0;
 }
