@@ -77,6 +77,51 @@ private:
         cout << node->val << " ";
     }
 
+    // [3] Delete Node
+    void DeleteNode(T item, Node<T> *&node)
+    {
+        if (!node)
+            return;
+        if (item < node->val)
+        {
+            DeleteNode(item, node->left);
+        }
+        else if (item > node->val)
+        {
+            DeleteNode(item, node->right);
+        }
+        else
+        {
+            if (!node->left && node->right)
+            {
+                delete node;
+                node = nullptr;
+            }
+
+            if (!node->left)
+            {
+                Node<T> *temp = node;
+                node = node->right;
+                delete temp;
+            }
+            else if (!node->right)
+            {
+                Node<T> *temp = node;
+                node = node->left;
+                delete temp;
+            }
+            else
+            {
+                Node<T> *suc = node->right;
+                while (suc->left)
+                    suc = suc->left;
+
+                node->val = suc->val;
+                DeleteNode(suc->val, node->right);
+            }
+        }
+    }
+
     // -- Additional Funcions -- //
     T getMin(Node<T> *node)
     {
@@ -162,7 +207,7 @@ public:
     // [3] Deleting Node
     void DeleteNode(T item)
     {
-        if (!node)
+        if (!root)
             return;
 
         if (SearchNode(item))
@@ -197,13 +242,6 @@ public:
 
 signed main()
 {
-    MyBST tree(10);
-    tree.insert(20);
-    tree.insert(5);
-    tree.insert(3);
-    tree.insert(4);
-    tree.insert(2);
-    tree.InOrder();
 
     return 0;
 }
