@@ -28,7 +28,7 @@ private:
 
     // -- Private Functions -- //
 
-    // -- Display section -- //
+    // [1] Display Functions
     // All of these traversal styles belong to the same category: Depth-First Search (DFS)
     void inOrder(Node<T> *root) // LVR: left, current value, right
     {
@@ -77,17 +77,7 @@ private:
         }
     }
 
-    // -- Additional Private Helper Functions -- //
-    void clear(Node<T> *node)
-    {
-        if (!node)
-            return;
-        clear(node->left);
-        clear(node->right);
-
-        delete node;
-    }
-
+    // [2] Additional Important Functions
     T TreeMax(Node<T> *root)
     {
         if (!root->left && !root->right)
@@ -164,7 +154,7 @@ private:
         LeftBoundary(root->left);
     }
 
-    void RightBoundary(Node<T> *root)
+    void RightBoundary(Node<T> *root) // display right boundary nodes only
     {
         if (!root)
             return;
@@ -187,6 +177,18 @@ private:
         int diameter = max({diameterOfRoot, l.first, r.first});
 
         return {diameter, h};
+        // this algorithm is based on the hight of the tree
+    }
+
+    // save memory leak
+    void clear(Node<T> *node)
+    {
+        if (!node)
+            return;
+        clear(node->left);
+        clear(node->right);
+
+        delete node;
     }
 
 public:
@@ -195,6 +197,7 @@ public:
     ~MyBT() { clear(root); }                         // save memory leak
 
     // -- Main Functions -- //
+    // customizing the root
     void setRoot(T item) // this function to initialize root
     {
         if (root)
@@ -210,6 +213,7 @@ public:
         root->val = item;
     }
 
+    // Inserting Function (you should put the path of the item and the value)
     void addByPath(vector<char> path, T item) // this function to add by path (you should give the path and the value)
     {
         if (!root)
@@ -238,6 +242,7 @@ public:
         }
     }
 
+    // [1] Display Functions
     void display_inOrder()
     {
         inOrder(root);
@@ -262,8 +267,8 @@ public:
         cout << nl;
     }
 
-    // -- Additional Functions -- //
-    T TreeMax()
+    // [2] Additional Functions
+    T TreeMax() // to get the max element from the tree
     {
         if (!root)
         {
@@ -273,7 +278,7 @@ public:
         return TreeMax(root);
     }
 
-    int TreeHeight()
+    int TreeHeight() // to get number of the levels of your tree
     {
         if (!root)
             return 0;
@@ -281,7 +286,7 @@ public:
         return TreeHeight(root);
     }
 
-    int TreeCount()
+    int TreeCount() // to get the number of nodes of your tree
     {
         if (!root)
             return 0;
@@ -289,7 +294,7 @@ public:
         return TreeCount(root);
     }
 
-    int LeavesCount()
+    int LeavesCount() // to get the number of leaves
     {
         if (!root)
             return 0;
@@ -297,7 +302,7 @@ public:
         return LeavesCount(root);
     }
 
-    bool TreeSearch(T item)
+    bool TreeSearch(T item) // to search about specific element on your tree
     {
         if (!root)
             assert(root != nullptr && "root should not be null");
@@ -305,7 +310,7 @@ public:
         return TreeSearch(root, item);
     }
 
-    bool isPerfect()
+    bool isPerfect() // to know you tree is perfect (have all nodes) or not
     {
         if (!root)
             return false;
@@ -313,7 +318,7 @@ public:
         return isPerfect(root);
     }
 
-    void LeftBoundary()
+    void LeftBoundary() // to print the whole left boundary
     {
         assert(root && "Your Tree is Empty !");
 
@@ -321,7 +326,7 @@ public:
         cout << nl;
     }
 
-    void RightBoundary()
+    void RightBoundary() // to print the whole right boundary
     {
         assert(root && "Your Tree is Empty !");
 
@@ -329,7 +334,7 @@ public:
         cout << nl;
     }
 
-    int diameterOfTree()
+    int diameterOfTree() // to know the make len between two nodes (diameter of the tree) :: this is popular problem (My "CP" skills)
     {
         return diameterOfTree(root).first;
     }
