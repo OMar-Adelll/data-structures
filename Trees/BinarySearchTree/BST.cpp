@@ -213,7 +213,7 @@ public:
         if (SearchNode(item))
             DeleteNode(item, root);
         else
-            cout << "This Element Doesn't Exist" << nl;
+            cout << "This Element is not found!" << nl;
     }
 
     // -- Additional Functions --//
