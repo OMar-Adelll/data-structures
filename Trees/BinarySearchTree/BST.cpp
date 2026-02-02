@@ -81,16 +81,32 @@ private:
     T getMin(Node<T> *node)
     {
         if (node && node->left)
-           return getMin(node->left);
+            return getMin(node->left);
 
         return node->val;
     }
 
     T getMax(Node<T> *node)
     {
-        if(node && node->right)
+        if (node && node->right)
             return getMax(node->right);
-        return node->val;  
+        return node->val;
+    }
+
+    bool SearchNode(T item, Node<T> *node)
+    {
+        if (!node)
+            return 0;
+
+        if (node->val == item)
+            return 1;
+
+        if (node->left)
+            SearchNode(item, node->left);
+        if (node->right)
+            SearchNode(item, node->right);
+
+        return 0;
     }
 
     // -- clean the memory -- //
@@ -143,18 +159,39 @@ public:
         cout << nl;
     }
 
+    // [3] Deleting Node
+    void DeleteNode(T item)
+    {
+        if (!node)
+            return;
+
+        if (SearchNode(item))
+            DeleteNode(item, root);
+        else
+            cout << "This Element Doesn't Exist" << nl;
+    }
 
     // -- Additional Functions --//
     T getMin()
     {
-        if(!root) exit(1);
+        if (!root)
+            exit(1);
         return getMin(root);
     }
 
     T getMax()
     {
-        if(!root) exit(1);
+        if (!root)
+            exit(1);
         return getMax(root);
+    }
+
+    bool SearchNode(T item)
+    {
+        if (!root)
+            return 0;
+
+        return SearchNode(item, root);
     }
 };
 
@@ -166,6 +203,7 @@ signed main()
     tree.insert(3);
     tree.insert(4);
     tree.insert(2);
-    cout << tree.getMax() << nl;
+    tree.InOrder();
+
     return 0;
 }
