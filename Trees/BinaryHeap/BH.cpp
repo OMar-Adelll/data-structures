@@ -50,7 +50,7 @@ class Heap
         }
     }
 
-    void HeapfiyDown(int idx)
+    void HeapfiyDown(int idx) // we will use this into pop or into our constructor to put an elements into its correct location
     {
         while (true)
         {
