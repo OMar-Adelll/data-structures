@@ -41,17 +41,58 @@ class Heap
         return x > y;     // this for Max Heap
     }
 
+    void HeapfiyUp(int idx) // we will use this into insertion to put an element into its correct location
+    {
+        while (idx > 0 && better(nums[idx], nums[parent(idx)]))
+        {
+            swap(nums[idx], nums[parent(idx)]);
+            idx = parent(idx);
+        }
+    }
+
+    void HeapfiyDown(int idx)
+    {
+        while (ture)
+        {
+            int l = left(idx);
+            int r = right(idx);
+            int best = idx;
+
+            if (l != -1 && better(nums[l], nums[best]))
+                best = l;
+            if (r != -1 && better(nums[r], nums[best]))
+                best = r;
+
+            if (iex == best) // best not changed
+                break;
+            swap(nums[idx], nums[best]);
+            idx = best;
+        }
+    }
+
 public:
     void push(const T &node)
     {
         nums.push_back(node);
         int idx = sz(nums) - 1;
+        HeapfiyUp(idx);
+    }
 
-        while (i > 0 && better(nums[idx], nums[parent(idx)])) // Heapfiy up to put an elemement on the correct location
-        {
-            swap(nums[idx], [parent(idx)]);
-            idx = parent(idx);
-        }
+    void pop()
+    {
+        if (nums.empty())
+            return;
+
+        /*
+            always we want to delet the root element and if you make this your binary will be not complete
+            -> solution :
+                1- we will assign the last elemnt to the first (when you make this you finaly deleted the root element value)
+                2- we will make Heapfiy down to the root to put it into its correct location
+        */
+        nums[0] = nums.back();
+        nums.pop_back();
+
+        HeapfiyDown(0); // you will make heapify down to the root like this
     }
 };
 
