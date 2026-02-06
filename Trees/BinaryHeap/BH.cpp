@@ -10,7 +10,7 @@ using namespace std;
 #define nl '\n'
 
 // you should pass the data type of your heap array
-// you should know that it Min heap by defualt you can change it type ( < T , 1 > ) this mean Max Heap
+// you should know that it Min heap by defualt you can change it type ( < T , false > ) this mean Max Heap
 template <typename T, bool MIN = true>
 class Heap
 {
