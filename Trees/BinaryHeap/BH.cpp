@@ -52,7 +52,7 @@ class Heap
 
     void HeapfiyDown(int idx)
     {
-        while (ture)
+        while (true)
         {
             int l = left(idx);
             int r = right(idx);
@@ -63,7 +63,7 @@ class Heap
             if (r != -1 && better(nums[r], nums[best]))
                 best = r;
 
-            if (iex == best) // best not changed
+            if (idx == best) // best not changed
                 break;
             swap(nums[idx], nums[best]);
             idx = best;
@@ -71,6 +71,15 @@ class Heap
     }
 
 public:
+    // this constructor to push a vector into Heap
+    Heap(const vector<T> &v)
+    {
+        nums = v;
+        for (int i = parent(sz(nums)); i >= 0; i--)
+            HeapfiyDown(i);
+    }
+
+    // this function to insert new element
     void push(const T &node)
     {
         nums.push_back(node);
@@ -78,21 +87,43 @@ public:
         HeapfiyUp(idx);
     }
 
+    // this function to pop element
     void pop()
     {
         if (nums.empty())
             return;
 
         /*
-            always we want to delet the root element and if you make this your binary will be not complete
-            -> solution :
-                1- we will assign the last elemnt to the first (when you make this you finaly deleted the root element value)
-                2- we will make Heapfiy down to the root to put it into its correct location
+        always we want to delet the root element and if you make this your binary will be not complete
+        -> solution :
+        1- we will assign the last elemnt to the first (when you make this you finaly deleted the root element value)
+        2- we will make Heapfiy down to the root to put it into its correct location
         */
         nums[0] = nums.back();
         nums.pop_back();
 
         HeapfiyDown(0); // you will make heapify down to the root like this
+    }
+
+    // this function to check your data structure is empty or not ?
+    bool empty()
+    {
+        return nums.empty();
+    }
+
+    // this function to return the number or size all elements
+    int size()
+    {
+        return sz(nums);
+    }
+
+    // this function return the top element (the minimum one -> Min Heap && the maximum one -> Max Heap)
+    T top()
+    {
+        if (nums.empty())
+            return T();
+
+        return nums[0];
     }
 };
 
