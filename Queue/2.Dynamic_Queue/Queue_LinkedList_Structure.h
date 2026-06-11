@@ -2,8 +2,13 @@
 // "وَأَنْ لَيْسَ لِلْإِنسَانِ إِلَّا مَا سَعَىٰ"
 // Free Palestine
 
-#ifndef PRIORITYQUEUE_LINKEDLIST_STRUCTURE_H
-#define PRIORITYQUEUE_LINKEDLIST_STRUCTURE_H
+/*
+    // IMPORTANT
+    - file is normal liked list and it used as a hlper to implement queue
+*/
+
+#ifndef QUEUE_LINKEDLIST_STRUCTUR_H
+#define QUEUE_LINKEDLIST_STRUCTUR_H
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,26 +38,8 @@ private:
     Node<T> *head;
     int length;
 
-    void insertFront(T item)
-    {
-        Node<T> *node = new Node<T>(item);
-        node->next = head;
-        head = node;
-        length++;
-    }
-
 public:
     LinkedList() : head(nullptr), length(0) {}
-    LinkedList(T item)
-    {
-        Node<T> *node = new Node<T>(item);
-        node->next = nullptr;
-        head = node;
-        length = 1;
-
-        // Time Complexity : O(1)
-        // Memory Complexity : O(1)
-    }
 
     // -- Main functions -- //
     bool isempty()
@@ -63,21 +50,22 @@ public:
         // Memory Complexity : O(1)
     }
 
-    void insert(T item) // the list should be sorted
+    void insertBack(T item)
     {
-        if (isempty() || head->val >= item)
-        {
-            insertFront(item);
-            return;
-        }
-
         Node<T> *node = new Node<T>(item);
-        Node<T> *trav = head;
-        while (trav->next && trav->next->val < item)
-            trav = trav->next;
 
-        node->next = trav->next;
-        trav->next = node;
+        if (isempty())
+        {
+            head = node;
+        }
+        else
+        {
+            Node<T> *trav = head;
+            while (trav->next != nullptr)
+                trav = trav->next;
+
+            trav->next = node;
+        }
         length++;
 
         // Time Complexity : O(n)
@@ -101,7 +89,7 @@ public:
     void deleteFront()
     {
         if (isempty())
-            return void(cout << "Your list is empty !" << nl);
+            return void(cout << "Your Queue is empty !" << nl);
 
         Node<T> *temp = head;
         head = head->next;
@@ -116,7 +104,7 @@ public:
     {
         if (isempty())
         {
-            cout << "Your list is empty !" << nl;
+            cout << "Your Queue is empty !" << nl;
             return;
         }
 
@@ -138,7 +126,7 @@ public:
     {
         if (isempty())
         {
-            cout << "Your list is empty !" << nl;
+            cout << "Your Queue is empty !" << nl;
             exit(1);
         }
         int Index = 0;
@@ -155,28 +143,6 @@ public:
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
         return -1;
-    }
-
-    void GreaterToSmaller()
-    {
-        if (isempty())
-        {
-            cout << "Your list is empty !" << nl;
-            return;
-        }
-
-        Node<T> *prv = nullptr, *nxt = nullptr, *cur = head;
-        while (cur)
-        {
-            nxt = cur->next;
-            cur->next = prv;
-            prv = cur;
-            cur = nxt;
-        }
-
-        head = prv;
-        // Time Complexity : O(n)
-        // Memory Complexity : O(1)
     }
 
     // -- save memory leak -- //
