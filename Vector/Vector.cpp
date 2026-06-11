@@ -21,6 +21,7 @@ private:
     int size;
     int capacity;
 
+    // private helper functions
     void expand_capacity()
     {
         capacity *= 2;
@@ -305,8 +306,7 @@ public:
     }
 
     // -- Operators -- //
-
-    MyVector &operator=(const MyVector<T> &other)
+    MyVector &operator=(const MyVector<T> &other) // this to assign vector to vector
     {
         if (this != &other)
         {
