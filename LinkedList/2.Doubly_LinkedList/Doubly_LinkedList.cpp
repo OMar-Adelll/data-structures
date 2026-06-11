@@ -22,6 +22,7 @@ struct Node
 
     Node(T item) : val(item), next(nullptr), prv(nullptr) {};
 };
+
 template <typename T>
 class LinkedList
 {
@@ -30,7 +31,9 @@ private:
     int len;
 
 public:
+    // empty constructor to initlize len
     LinkedList() : head(nullptr), len(0) {};
+
     LinkedList(T item)
     {
         Node<T> *node = new Node<T>(item);
@@ -111,6 +114,7 @@ public:
         }
     }
 
+    // 0-based Indexing like arrays
     void updateAt(T item, int idx)
     {
 
@@ -180,6 +184,7 @@ public:
         len--;
     }
 
+    // 0-based Indexing like arrays
     void deleteAt(int idx)
     {
         if (idx < 0 || idx >= len)
@@ -234,6 +239,7 @@ public:
 
     // -- Additional functions -- //
 
+    // delete all nodes with specific value
     void delete_all_nodes_with_key(T item)
     {
         if (isempty())
