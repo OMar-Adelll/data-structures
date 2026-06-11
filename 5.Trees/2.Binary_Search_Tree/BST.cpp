@@ -9,7 +9,7 @@ using namespace std;
 #define sz(x) (int)(x).size()
 #define nl '\n'
 
-// the first thing you should to know this version will not include any duplicates
+// IMPORTANT : this version will not include any dublicates
 template <typename T>
 class Node
 {
@@ -46,7 +46,7 @@ private:
                 insert(item, node->right);
         }
 
-        // else -> this node is already exsit
+        // else -> this node is already exsit and this version don't support dublicates
     }
 
     // [2] display BST
@@ -92,25 +92,25 @@ private:
         }
         else
         {
-            if (!node->left && node->right)
+            if (!node->left && node->right) // if yor target is a leaf node
             {
                 delete node;
                 node = nullptr;
             }
 
-            if (!node->left)
+            if (!node->left) // if you don't have left then your target in right place (leaf node)
             {
                 Node<T> *temp = node;
                 node = node->right;
                 delete temp;
             }
-            else if (!node->right)
+            else if (!node->right) // if you don't have right then your target in left place (leaf node)
             {
                 Node<T> *temp = node;
                 node = node->left;
                 delete temp;
             }
-            else
+            else // this if your target isn't a leaf node so that you should resort the subtree after delete you target
             {
                 Node<T> *suc = node->right;
                 while (suc->left)
@@ -155,7 +155,7 @@ private:
     }
 
     // -- clean the memory -- //
-    void clear(Node<T> *node)
+    void clear(Node<T> *node) // save memory leak
     {
         if (!node)
             return;
@@ -189,6 +189,7 @@ public:
         PreOrder(root);
         cout << nl;
     }
+
     void InOrder()
     {
         if (!root)
@@ -196,6 +197,7 @@ public:
         InOrder(root);
         cout << nl;
     }
+
     void PostOrder()
     {
         if (!root)
@@ -210,13 +212,13 @@ public:
         if (!root)
             return;
 
-        if (SearchNode(item))
+        if (SearchNode(item)) // this to know if value is found or not to can delte it if exist
             DeleteNode(item, root);
         else
             cout << "This Element is not found!" << nl;
     }
 
-    // -- Additional Functions --//
+    // -- Additional General Functions --//
     T getMin()
     {
         if (!root)

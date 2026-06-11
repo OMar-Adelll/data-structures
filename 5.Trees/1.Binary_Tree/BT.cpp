@@ -30,7 +30,7 @@ private:
 
     // [1] Display Functions
     // All of these traversal styles belong to the same category: Depth-First Search (DFS)
-    void inOrder(Node<T> *root) // LVR: left, current value, right
+    void inOrder(Node<T> *root) // LVR: left, root, right
     {
         if (!root)
             return;
@@ -39,7 +39,7 @@ private:
         inOrder(root->right);
     }
 
-    void preOrder(Node<T> *root) // VLR: current value, left, right
+    void preOrder(Node<T> *root) // VLR: root, left, right
     {
         if (!root)
             return;
@@ -48,7 +48,7 @@ private:
         preOrder(root->right);
     }
 
-    void postOrder(Node<T> *root) // LRV: left, right, current value
+    void postOrder(Node<T> *root) // LRV: left, right, root
     {
         if (!root)
             return;
@@ -124,15 +124,18 @@ private:
     bool TreeSearch(Node<T> *root, T item)
     {
         bool rs = root->val = item;
+
         if (!rs && root->left)
             rs = TreeSearch(root->left, item);
+
         if (!rs && root->right)
             rs = TreeSearch(root->right, item);
 
         return rs;
     }
 
-    bool isPerfect(Node<T> *root, int h = -1) // tree is perfect when all leaves are the same height so that we check with height
+    // tree is perfect when all leaves are the same height
+    bool isPerfect(Node<T> *root, int h = -1)
     {
         if (h == -1)
             h = TreeHeight(root);
@@ -197,6 +200,7 @@ public:
     ~MyBT() { clear(root); }                         // save memory leak
 
     // -- Main Functions -- //
+
     // customizing the root
     void setRoot(T item) // this function to initialize root
     {
@@ -213,7 +217,7 @@ public:
         root->val = item;
     }
 
-    // Inserting Function (you should put the path of the item and the value)
+    // Inserting Function (you should put the path of the item and the value like this ({'L','R',"R"}, 10))
     void addByPath(vector<char> path, T item) // this function to add by path (you should give the path and the value)
     {
         if (!root)

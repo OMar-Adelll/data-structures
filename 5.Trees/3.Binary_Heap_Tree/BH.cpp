@@ -9,11 +9,27 @@ using namespace std;
 #define sz(x) (int)(x).size()
 #define nl '\n'
 
-// you should pass the data type of your heap array
-// you should know that it Min heap by defualt you can change it type ( < T , false > ) this mean Max Heap
+/*
+    ## why heap is useful data structure
+    - If you have sorted data and you want to add a new element into it's correct postion is difficult if you will use array
+    - It more easy if you will use linked list but it's not optimal solution cuz you should travers into linked-list each time
+    solution :
+    - you will use the heap it will be faster than linked list
+*/
+
+/*
+    ## Heap main idea (MIN heap) :
+    - the root of each sub tree is min than or equal to the subtree childrens
+    - it fill left side first to right side and the tree should be ballanced all the time
+    - if you delete the top (root) you will replace it value with another one and make heapfiy down
+    - indcies based on array (left : i * 2 + 1 , right r * 2 + 2)
+*/
+
+// This Heap is dyanmic but it min heap by defualt and you can select if you want it max heap
 template <typename T, bool MIN = true>
 class Heap
 {
+private:
     vector<T> nums;
 
     // this formula is to find the left child from index
@@ -41,7 +57,7 @@ class Heap
         return x > y;     // this for Max Heap
     }
 
-    void HeapfiyUp(int idx) // we will use this into insertion to put an element into its correct location
+    void HeapfiyUp(int idx) // compare the curr with it's parent to put the new node in correct position
     {
         while (idx > 0 && better(nums[idx], nums[parent(idx)]))
         {
@@ -50,7 +66,7 @@ class Heap
         }
     }
 
-    void HeapfiyDown(int idx) // we will use this into pop or into our constructor to put an elements into its correct location
+    void HeapfiyDown(int idx) // important to put root into correct position and you will use it into (constructor, delete element)
     {
         while (true)
         {
@@ -94,15 +110,17 @@ public:
             return;
 
         /*
-        always we want to delet the root element and if you make this your binary will be not complete
-        -> solution :
-        1- we will assign the last elemnt to the first (when you make this you finaly deleted the root element value)
-        2- we will make Heapfiy down to the root to put it into its correct location
+            always we want to delete the root element and if you make this your binary heap tree will be not complete
+            solution:
+            1- we will assign the root with the last node you have added it (leaf)
+            2- after the first step (now finally you deleted the top by assigning anothe value)
+            3- now will appear new problem and it's the heap is not ballanced cuz the last element is at incorrect postion now (root)
+            4- you will make heapfiydown to put it into it's correct place
         */
         nums[0] = nums.back();
         nums.pop_back();
 
-        HeapfiyDown(0); // you will make heapify down to the root like this
+        HeapfiyDown(0);
     }
 
     // this function to check your data structure is empty or not ?
@@ -111,13 +129,13 @@ public:
         return nums.empty();
     }
 
-    // this function to return the number or size all elements
+    // this function to return the count of elements into heap
     int size()
     {
         return sz(nums);
     }
 
-    // this function return the top element (the minimum one -> Min Heap && the maximum one -> Max Heap)
+    // return always root but it will be (the minimum element -> Min Heap && the maximum element -> Max Heap)
     T top()
     {
         if (nums.empty())
