@@ -34,16 +34,19 @@ private:
     Node<T> *head;
 
 public:
+    // default constructor to initlize head pointer with null value
     Mystack() : head(nullptr) {};
 
     // -- Main Functions -- //
     bool isempty() { return head == nullptr; }
+
     void push(T item)
     {
         Node<T> *node = new Node(item);
         node->next = head;
         head = node;
     }
+
     void pop()
     {
         if (isempty())
@@ -87,6 +90,7 @@ public:
         cout << nl;
     }
 
+    // this function is not optimal method (for practice only)
     int getSize()
     {
         if (isempty())
@@ -129,6 +133,7 @@ public:
         return -1; // not found
     }
 
+    // save memory leak
     ~Mystack()
     {
         while (!isempty())
