@@ -26,7 +26,7 @@ private:
     int top;
     T *arr;
 
-    // reverse function with recursive calls
+    // recursive function to reverse stack to avoid empty checks into public function
     void rev()
     {
         if (top <= 0)
@@ -46,15 +46,19 @@ public:
         this->size = size;
         this->top = -1;
         arr = new T[size];
+
         // Time Complexity : O(n)
         // Memory Complexity : O(n)
     }
+
     ~MyStack()
     {
         delete[] arr; // save memory leak
     }
 
     // -- Main Functions --//
+
+    // it will help you to validate the overflow (push function)
     bool isfull()
     {
         return top == size - 1;
@@ -64,6 +68,8 @@ public:
     {
         return top == -1;
     }
+
+    // insert new element
     void push(T item)
     {
         if (isfull())
@@ -72,6 +78,7 @@ public:
         arr[++top] = item;
     }
 
+    // erese the top element
     void pop()
     {
         if (isempty())
@@ -80,6 +87,7 @@ public:
         top--;
     }
 
+    // return the top element
     T peek()
     {
         if (isempty())
@@ -116,6 +124,7 @@ public:
         return arr[top--];
     }
 
+    // this function is only for practice only but it's wrong into stack logic
     void push_bottom(T item)
     {
         if (isfull())
@@ -141,6 +150,7 @@ public:
         rev();
     }
 
+    // return the 0-based index of element if it found
     int searchItem(T item)
     {
         if (isempty())
@@ -156,7 +166,8 @@ public:
         return -1;
     }
 
-    void pop_and_push(T item) // this function if you want to pop the peek and push item in the same time
+    // this function will replace the top element with another one
+    void pop_and_push(T item)
     {
         arr[top] = item;
     }
@@ -164,6 +175,5 @@ public:
 
 signed main()
 {
-
     return 0;
 }
