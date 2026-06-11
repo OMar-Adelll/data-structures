@@ -33,6 +33,7 @@ class Mystack
 private:
     Node<T> *head;
 
+    // operators helper functions
     int precedence(char op)
     {
         if (op == '+' or op == '-')
@@ -60,8 +61,9 @@ private:
 public:
     Mystack() : head(nullptr) {};
 
-    // -- Main Functions -- //
+    // -- Main Stack Functions -- //
     bool isempty() { return head == nullptr; }
+
     void push(T item)
     {
         Node<T> *node = new Node(item);
@@ -139,7 +141,7 @@ public:
             cur = cur->next;
         }
 
-        return -1; // not found
+        return -1;
     }
 
     ~Mystack()
@@ -149,6 +151,7 @@ public:
     }
 
     // -- Applications of Stack (General functions) -- //
+
     string Infix_to_Postfix(string &infix)
     {
         Mystack<char> operators;
@@ -325,19 +328,8 @@ public:
         return vals.top();
     }
 
-    string Infix_to_Prefix(string &infix) // to convert the Infix to prefix
-    {
-        // TODO
-        return "";
-    }
-
-    int prefixEvaluation(string &prefix) // to evaluate the prefix equation
-    {
-        // TODO
-        return 0;
-    }
-
-    string reverseEachWord(string &word) // reverse each word : Omar Adel -> ledA ramO
+    // reverse each word : Omar Adel -> ledA ramO
+    string reverseEachWord(string &word) // this handel spaces
     {
         Mystack<char> st;
         string res = "";
@@ -363,7 +355,8 @@ public:
         return res;
     }
 
-    string reverseWord(string &word) // reverse sentence : OmarAdel -> ledAramO
+    // reverse sentence : OmarAdel -> ledAramO
+    string reverseWord(string &word) // this will not handel spaces
     {
         Mystack<char> st;
         string res = "";
@@ -380,6 +373,7 @@ public:
         return res;
     }
 
+    // check banace problem
     bool checkBalance(string &s)
     {
         Mystack<char> st;
@@ -393,7 +387,8 @@ public:
         return st.isempty();
     }
 
-    bool isPalindrome(string &s) // chach if the word is palindrome or not
+    // palindrome : string from both sides is the same -> abba (normal) == abba (reversed)
+    bool isPalindrome(string &s)
     {
         Mystack<char> st;
         for (auto &c : s)
@@ -412,7 +407,8 @@ public:
         return true;
     }
 
-    string decTobin(int x) // conver decimal to binary
+    // conver integers to binary representation
+    string toBinary(int x)
     {
         Mystack<char> st;
         string s = "";
