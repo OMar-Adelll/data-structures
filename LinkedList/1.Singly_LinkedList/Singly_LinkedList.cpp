@@ -30,7 +30,9 @@ private:
     int length;
 
 public:
+    // Empty constructor to initialze lenght
     LinkedList() : head(nullptr), length(0) {}
+
     LinkedList(T item)
     {
         Node<T> *node = new Node<T>(item);
@@ -84,6 +86,7 @@ public:
         // Memory Complexity : O(1)
     }
 
+    // 0-based indexing like arrays
     void insertAt(T item, int idx)
     {
         if (idx < 0 || idx > length) // ( > length ) because you might insert at last position
@@ -113,6 +116,7 @@ public:
         // Memory Complexity : O(1)
     }
 
+    // 0-based Indexing like arrays
     void updateAt(T item, int idx)
     {
 
@@ -183,6 +187,7 @@ public:
         // Memory Complexity : O(1)
     }
 
+    // 0-based Indexing like arrays
     void deleteAt(int idx)
     {
         if (idx < 0 || idx >= length)
@@ -254,11 +259,13 @@ public:
         for (int i = 0; i < idx; i++)
             trav = trav->next;
 
+        return trav;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return trav;
     }
 
+    // return the index of element if found and return -1 if not-found (0-based)
     int searchItem(T item)
     {
         if (isempty())
@@ -277,9 +284,10 @@ public:
             trav = trav->next;
         }
 
+        return -1;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return -1;
     }
 
     Node<T> *getMax()
@@ -298,9 +306,10 @@ public:
             trav = trav->next;
         }
 
+        return maxi;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return maxi;
     }
 
     Node<T> *getMin()
@@ -320,9 +329,10 @@ public:
             trav = trav->next;
         }
 
+        return mini;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return mini;
     }
 
     Node<T> *getMid()
@@ -340,11 +350,13 @@ public:
         if (fast->next == nullptr)
             return Mid;
 
+        return Mid->next;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return Mid->next;
     }
 
+    // delete one copy of specific value
     void deleteVal(T item)
     {
         if (isempty())
@@ -402,6 +414,7 @@ public:
         }
 
         head = prv;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
     }
@@ -431,6 +444,7 @@ public:
             trav->val = nums[idx++];
             trav = trav->next;
         }
+
         // Time Complexity : O(n log n )
         // Memory Complexity : O(1)
     }
@@ -455,6 +469,7 @@ public:
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
     }
+    
     int countOccurance(T item)
     {
         if (isempty())
@@ -470,9 +485,10 @@ public:
             trav = trav->next;
         }
 
+        return freq;
+
         // Time Complexity : O(n)
         // Memory Complexity : O(1)
-        return freq;
     }
 
     // -- save memory leak -- //
@@ -498,6 +514,6 @@ public:
 
 int main()
 {
-    
+
     return 0;
 }
